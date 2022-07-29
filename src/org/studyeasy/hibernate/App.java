@@ -18,14 +18,17 @@ public class App {
 		Session session=factory.getCurrentSession();
 		try {
 			//create new object
-			Users user=new Users("habib","1234","habib","habib");
+			//Users user=new Users("naima","1234","naima","chawech");
 			//start transaction
 			session.beginTransaction();
 			//perform tansaction
-			session.save(user);
+			//session.save(user);
 			//commit transaction
-			session.getTransaction().commit();
-			
+			//session.getTransaction().commit();
+			List<Users> users= session.createQuery("from users where userName ='iyad'").getResultList();
+			for (Users user : users) {
+				System.out.println(user);
+			}
 		} finally {
 			session.close();
 			factory.close();
